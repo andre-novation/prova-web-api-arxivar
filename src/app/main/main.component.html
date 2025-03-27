@@ -1,0 +1,30 @@
+<nav>
+  <h2>MAIN</h2>
+  <button (click)="logout()">logout</button>
+</nav>
+
+<div
+  style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  "
+>
+  <button (click)="getBusinessUnits()">Get Business Units</button>
+
+  <button (click)="getDocumentTypes()">Get Document Types</button>
+
+  <div style="display: flex; gap: 1rem; margin-top: 1rem">
+    <input
+      style="width: 3rem"
+      type="number"
+      max="2"
+      min="0"
+      [formControl]="documentTypesMode"
+    />
+    <button (click)="getDocumentTypesMode()">Get Document Types Mode</button>
+  </div>
+
+  <button (click)="getStates()">getStates()</button>
+</div>

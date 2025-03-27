@@ -1,0 +1,14 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  margin: 0 2rem;
+
+  button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 2rem;
+  }
+}
