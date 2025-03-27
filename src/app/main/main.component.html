@@ -3,28 +3,53 @@
   <button (click)="logout()">logout</button>
 </nav>
 
-<div
-  style="
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  "
->
-  <button (click)="getBusinessUnits()">Get Business Units</button>
-
-  <button (click)="getDocumentTypes()">Get Document Types</button>
-
-  <div style="display: flex; gap: 1rem; margin-top: 1rem">
-    <input
-      style="width: 3rem"
-      type="number"
-      max="2"
-      min="0"
-      [formControl]="documentTypesMode"
-    />
-    <button (click)="getDocumentTypesMode()">Get Document Types Mode</button>
+<section class="apiList">
+  <div class="apiItem">
+    <p-button (click)="getDocTypes()" label="97 /DocumentTypes"></p-button>
   </div>
 
-  <button (click)="getStates()">getStates()</button>
-</div>
+  <div class="apiItem">
+    <p-select
+      [formControl]="docTypesMode"
+      [options]="TypesModeOptions"
+      optionLabel="label"
+      optionValue="value"
+      [style]="{ minWidth: '10rem' }"
+    />
+
+    <p-button
+      [disabled]="docTypesMode.value == null"
+      label="/ DocumentTypes / ( mode ) / mode"
+      (click)="getDocTypesMode()"
+    ></p-button>
+  </div>
+
+  <div class="apiItem">
+    <p-select
+      [formControl]="criteriaMode"
+      [options]="TypesModeOptions"
+      optionLabel="label"
+      optionValue="value"
+      [style]="{ minWidth: '10rem' }"
+    />
+
+    @if (criteriaMode.value !== null) {
+    <input pInputText type="text" [formControl]="criteriaOrderBy" />
+    }
+
+    <p-button (click)="getBusinessUnits()">
+      @if (criteriaMode.value !== null) { 88 / DocumentTypes / ( mode ) / (
+      orderBy ) } @else { 88 / BusinessUnits }
+    </p-button>
+  </div>
+
+  <div class="apiItem">
+    <p-button (click)="getStates()" label="getStates()" />
+  </div>
+
+  <div class="apiItem">
+    <p-inputnumber type="number" [formControl]="docTypeId" />
+
+    <p-button (click)="getDocClassStates()" label="Get DocClassStates" />
+  </div>
+</section>

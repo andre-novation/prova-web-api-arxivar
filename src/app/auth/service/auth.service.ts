@@ -20,7 +20,7 @@ export class AuthService {
   signIn(user: AuthenticationTokenRequestDTO) {
     console.log('Sign in');
     this.http
-      .post(API + 'Authentication', user)
+      .post(API + '/Authentication', user)
       .pipe(take(1))
       .subscribe({
         next: (res: AuthenticationTokenDTO) => {

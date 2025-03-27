@@ -12,3 +12,23 @@ nav {
     height: 2rem;
   }
 }
+
+.apiList {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+  flex-direction: column;
+  padding: 2rem;
+
+  .apiItem {
+    display: flex;
+    gap: 1rem;
+
+    p-inputnumber {
+      width: 3rem;
+    }
+    input {
+      width: 10rem;
+    }
+  }
+}

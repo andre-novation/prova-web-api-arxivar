@@ -1,1 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+  font-smooth: always;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+*:focus {
+  outline: none;
+}
+
+html,
+body {
+  overscroll-behavior: none;
+  scroll-padding-top: 10px;
+  font-family: "Roboto", sans-serif;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+}
+
+body {
+  overflow-y: overlay;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+a {
+  text-decoration-skip-ink: auto;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.scroll-container {
+  overscroll-behavior: contain;
+}
+
+body {
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
