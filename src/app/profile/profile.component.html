@@ -8,20 +8,78 @@
     <p-button label="GET" (click)="getProfile()" />
   </div>
 
-  <div class="apiItem">
-    <h3>API / BUFFER - Insert file</h3>
-    <p-fileupload
-      mode="basic"
-      name="demo[]"
-      chooseIcon="pi pi-upload"
-      maxFileSize="1000000"
-      chooseLabel="Browse"
-      (onSelect)="inserfBuffer($event)"
-    />
-  </div>
   <!-- (onUpload)="inserfBuffer($event)" -->
   <!-- [auto]="true" -->
   <!-- [url]="url" -->
 
   <p-divider />
+
+  @if (profileForm) {
+  <div class="profileForm">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      @for (item of this.profileData().fields; track $index) {
+      @if(item.required){
+      <div class="formItem">
+        @switch (getInputType(item.className)) { @case ('number') {
+
+        <p-iftalabel>
+          <p-inputnumber
+            class="input"
+            [id]="item.name"
+            [formControlName]="item.name!"
+          />
+          <label [for]="item.name">
+            {{ item.description }} ({{ item.className }})
+          </label>
+        </p-iftalabel>
+
+        } @case ('text') {
+        <p-iftalabel>
+          <input
+            class="input"
+            [id]="item.name"
+            [formControlName]="item.name!"
+            pInputText
+          />
+          <label [for]="item.name">
+            {{ item.description }} ({{ item.className }})
+          </label>
+        </p-iftalabel>
+
+        } @default {
+        <p-iftalabel>
+          <input
+            class="input"
+            [id]="item.name"
+            [formControlName]="item.name!"
+            pInputText
+          />
+          <label [for]="item.name">
+            {{ item.description }} {{ item.className }}
+          </label>
+        </p-iftalabel>
+        } }
+      </div>
+      } }
+
+      <div class="apiItem">
+        <p-iftalabel>
+          <label for="file"> file </label>
+
+          <p-fileupload
+            id="file"
+            name="file"
+            mode="basic"
+            chooseIcon="pi pi-upload"
+            maxFileSize="1000000"
+            chooseLabel="Browse"
+            (onSelect)="inserfBuffer($event)"
+          />
+        </p-iftalabel>
+      </div>
+
+      <p-button label="Create Profile" type="submit" />
+    </form>
+  </div>
+  }
 </div>

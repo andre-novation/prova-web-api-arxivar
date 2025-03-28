@@ -3,6 +3,7 @@ import { API } from '../../API/api';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MaskProfileSchemaDTO } from './MaskProfileSchemaDTO';
+import { ProfileDTO } from './ProfileDTO';
 
 @Injectable({
   providedIn: 'root',
@@ -22,5 +23,10 @@ export class ProfileService {
     formData.append('file', file);
 
     return this.http.post(url, formData);
+  }
+
+  createProfile(profile: ProfileDTO) {
+    const url = `${API}/Profiles`;
+    return this.http.post(url, profile);
   }
 }
