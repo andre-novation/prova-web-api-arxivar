@@ -1,0 +1,23 @@
+<h1>Notes</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="fields">
+    <p-iftalabel>
+      <p-inputnumber class="input" id="profileId" formControlName="docnumber" />
+
+      <label for="profileId"> Document number </label>
+    </p-iftalabel>
+
+    <p-iftalabel>
+      <input class="input" type="text" pInputText formControlName="comment" />
+
+      <label for="profileId"> Note </label>
+    </p-iftalabel>
+  </div>
+
+  <p-button type="submit">Create</p-button>
+</form>
+
+@if (result) {
+<pre>{{ result | json }}</pre>
+}

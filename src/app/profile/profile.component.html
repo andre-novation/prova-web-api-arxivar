@@ -1,5 +1,7 @@
 <div class="wrapper">
+  @if (resultJson) {
   <pre>{{ resultJson | json }}</pre>
+  }
 
   <p-divider />
 
@@ -9,9 +11,9 @@
     <p-button label="GET" (click)="getProfile()" />
   </div>
 
+  @if (profileForm) {
   <p-divider />
 
-  @if (profileForm) {
   <div class="profileForm">
     <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
       @for (item of this.profileData().fields; track $index) {

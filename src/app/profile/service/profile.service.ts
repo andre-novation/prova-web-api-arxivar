@@ -29,4 +29,9 @@ export class ProfileService {
     const url = `${API}/Profiles`;
     return this.http.post(url, profile);
   }
+
+  GET() {
+    const url = `${API}/Profiles`;
+    return this.http.get(url);
+  }
 }
