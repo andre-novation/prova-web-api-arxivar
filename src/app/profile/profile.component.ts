@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ProfileService } from './service/profile.service';
+
 import {
   FormBuilder,
   FormControl,
@@ -25,6 +26,9 @@ import { IftaLabelModule } from 'primeng/iftalabel';
     FileUploadModule,
     CommonModule,
     ReactiveFormsModule,
+    InputTextModule,
+    InputNumberModule,
+    IftaLabelModule,
     InputTextModule,
     InputNumberModule,
     IftaLabelModule,
@@ -76,6 +80,7 @@ export class ProfileComponent {
   }
 
   inserfBuffer(event: FileSelectEvent) {
+    console.log('🚀 ~ inserfBuffer ~ event:', event);
     console.log('🚀 ~ inserfBuffer ~ event:', event);
 
     this.service
@@ -150,4 +155,8 @@ export class ProfileComponent {
 
     return typeMap[className] || 'text';
   }
+
+  //
+  //
+  //
 }
