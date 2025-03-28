@@ -1,33 +1,23 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { AuthService } from './auth/service/auth.service';
+import { HeaderComponent } from '../components/header/header.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  template: '<router-outlet />',
+  imports: [CommonModule, RouterOutlet, HeaderComponent],
+  templateUrl: './app.component.html',
+  // styleUrl: './.component.scss',
 })
 export class AppComponent implements OnInit {
   title = 'prova-web-api-arxivar';
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
 
+  isAuthenticated = () => this.authService.isAuthenticated();
+
   ngOnInit() {
-    const cookies = this.authService.getToken();
-
-    if (cookies) {
-      console.log(
-        `
-        * User is authenticated with cookies: *
-
-        ${cookies.tokenType}
-
-        `,
-        cookies
-      );
-      this.router.navigate(['/main']);
-    } else {
-      this.router.navigate(['/sign-in']);
-    }
+    this.authService.isAuthenticated();
   }
 }

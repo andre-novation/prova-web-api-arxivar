@@ -1,0 +1,12 @@
+<nav>
+  <div class="nav-links">
+    <p-button severity="secondary" label="Main" (click)="redirectTo('/main')" />
+    <p-button
+      label="Profile"
+      severity="info"
+      (click)="redirectTo('/profile')"
+    />
+  </div>
+
+  <p-button severity="danger" (click)="logout()">logout</p-button>
+</nav>

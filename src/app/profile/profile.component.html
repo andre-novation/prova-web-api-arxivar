@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <pre>{{ resultJson | json }}</pre>
+  <p-divider />
+
+  <div class="apiItem">
+    <h3>Get Profilo by Document Type</h3>
+    <input type="text" pInputText [formControl]="profileDocType" />
+    <p-button label="GET" (click)="getProfile()" />
+  </div>
+
+  <div class="apiItem">
+    <h3>API / BUFFER - Insert file</h3>
+    <p-fileupload
+      mode="basic"
+      name="demo[]"
+      chooseIcon="pi pi-upload"
+      maxFileSize="1000000"
+      chooseLabel="Browse"
+      (onSelect)="inserfBuffer($event)"
+    />
+  </div>
+  <!-- (onUpload)="inserfBuffer($event)" -->
+  <!-- [auto]="true" -->
+  <!-- [url]="url" -->
+
+  <p-divider />
+</div>

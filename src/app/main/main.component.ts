@@ -10,6 +10,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { SelectModule } from 'primeng/select';
 import { InputGroupModule } from 'primeng/inputgroup';
+import { DividerModule } from 'primeng/divider';
+
+import { Router } from '@angular/router';
 
 type Select = { label: string; value: number | null }[];
 
@@ -22,6 +25,7 @@ type Select = { label: string; value: number | null }[];
     InputNumberModule,
     SelectModule,
     InputGroupModule,
+    DividerModule,
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
@@ -29,6 +33,7 @@ type Select = { label: string; value: number | null }[];
 export class MainComponent {
   private readonly authService = inject(AuthService);
   private readonly http = inject(HttpClient);
+  private readonly router = inject(Router);
 
   TypesModeOptions: Select = [
     { label: '-', value: null },
@@ -36,10 +41,6 @@ export class MainComponent {
     { label: 'Archive', value: 1 },
     { label: 'ArchivePa', value: 2 },
   ];
-
-  logout() {
-    this.authService.signOut();
-  }
 
   criteriaMode = new FormControl(null);
   criteriaOrderBy = new FormControl('code');

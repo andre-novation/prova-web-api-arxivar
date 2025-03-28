@@ -4,7 +4,7 @@ import {
   AuthenticationTokenDTO,
   AuthenticationTokenRequestDTO,
 } from '../models';
-import { take } from 'rxjs';
+import { map, Observable, of, take } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { API } from '../../API/api';
@@ -50,8 +50,18 @@ export class AuthService {
     this.router.navigate(['/sign-in']);
   }
 
-  isAuthenticated() {
-    return this.cookies.check('token');
+  isAuthenticated(): Observable<boolean> {
+    const token = this.cookies.check('token');
+
+    if (!token) {
+      this.router.navigate(['/sign-in']);
+      return of(false);
+    }
+    return this.http.get(API + '/Authentication/identityInfo').pipe(
+      map((res) => {
+        return res as boolean;
+      })
+    );
   }
 
   getToken() {

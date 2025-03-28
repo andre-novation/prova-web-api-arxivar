@@ -1,12 +1,8 @@
-<nav>
-  <h2>MAIN</h2>
-  <button (click)="logout()">logout</button>
-</nav>
-
 <section class="apiList">
   <div class="apiItem">
     <p-button (click)="getDocTypes()" label="97 /DocumentTypes"></p-button>
   </div>
+  <p-divider />
 
   <div class="apiItem">
     <p-select
@@ -23,6 +19,7 @@
       (click)="getDocTypesMode()"
     ></p-button>
   </div>
+  <p-divider />
 
   <div class="apiItem">
     <p-select
@@ -42,10 +39,12 @@
       orderBy ) } @else { 88 / BusinessUnits }
     </p-button>
   </div>
+  <p-divider />
 
   <div class="apiItem">
     <p-button (click)="getStates()" label="getStates()" />
   </div>
+  <p-divider />
 
   <div class="apiItem">
     <p-inputnumber type="number" [formControl]="docTypeId" />
