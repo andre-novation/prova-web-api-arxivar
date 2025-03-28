@@ -1,1 +1,19 @@
-<p>attachments works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h1>Attachments</h1>
+
+  <p-iftalabel>
+    <p-inputnumber class="input" id="profileId" formControlName="docnumber" />
+
+    <label for="profileId"> Document number </label>
+  </p-iftalabel>
+
+  <p-iftalabel>
+    <input class="input" type="text" pInputText formControlName="comment" />
+
+    <label for="profileId"> Comment </label>
+  </p-iftalabel>
+
+  <app-insert [] (bufferArray)="buffer($event)" />
+
+  <p-button type="submit"> Create </p-button>
+</form>
