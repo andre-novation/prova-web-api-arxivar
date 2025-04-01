@@ -1,22 +1,17 @@
 import { Component, inject, signal } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { ProfileService } from './service/profile.service';
-
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { ProfileService } from '../service/profile.service';
+import { FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { DividerModule } from 'primeng/divider';
 import { CommonModule } from '@angular/common';
-import { FileSelectEvent, FileUploadModule } from 'primeng/fileupload';
+import { FileUploadModule } from 'primeng/fileupload';
 import { take } from 'rxjs';
-import { ProfileDTO } from './service/ProfileDTO';
+import { ProfileDTO } from '../service/ProfileDTO';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { IftaLabelModule } from 'primeng/iftalabel';
-import { InsertComponent } from '../../components/bufferAPI/insert/insert.component';
+import { InsertComponent } from '../../../components/bufferAPI/insert/insert.component';
 
 @Component({
   selector: 'app-profile',
