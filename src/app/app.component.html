@@ -5,12 +5,21 @@
     max-height: 100vh;
     height: 100vh;
     overflow: hidden;
+  }
 
-    router-outlet {
-      overflow: auto;
-    }
+  .container {
+    overflow: auto;
+    width: calc(100% - 300px);
+    padding: 1rem;
+  }
+
+  app-header {
+    width: 300px;
+    overflow: auto;
   }
 </style>
 
 <app-header />
-<router-outlet />
+<div class="container">
+  <router-outlet />
+</div>

@@ -4,14 +4,20 @@
 
     <p-button
       label="Creazione Profilo"
-      severity="info"
+      severity="contrast"
       (click)="redirectTo('/profile')"
     />
 
     <p-button
       label="Creazione Profilo da profilo predefinito"
-      severity="info"
+      severity="contrast"
       (click)="redirectTo('/profilePredefined')"
+    />
+
+    <p-button
+      label="Permessi Profili"
+      severity="contrast"
+      (click)="redirectTo('/profilePermissions')"
     />
 
     <p-button label="Notes" severity="info" (click)="redirectTo('/notes')" />

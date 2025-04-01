@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { InsertComponent } from '../../components/bufferAPI/insert/insert.component';
 import { IftaLabelModule } from 'primeng/iftalabel';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -11,6 +10,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AttachmentsService } from './attachments.service';
+import { InsertComponent } from '@components/bufferAPI/insert/insert.component';
 
 @Component({
   selector: 'app-attachments',
