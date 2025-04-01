@@ -1,0 +1,24 @@
+.wrapper {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+
+  p-select {
+    width: 100%;
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+
+    .formItem {
+      width: 100%;
+
+      input,
+      p-inputnumber {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { API } from '../../API/api';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { MaskProfileSchemaDTO } from './MaskProfileSchemaDTO';
 import { ProfileDTO } from './ProfileDTO';
 
@@ -33,5 +33,17 @@ export class ProfileService {
   GET() {
     const url = `${API}/Profiles`;
     return this.http.get(url);
+  }
+
+  //
+  //
+  //
+
+  getPredefinitions() {
+    return this.http.get(`${API}/PredefinedProfiles`);
+  }
+
+  getPredefinitionFields(predefinedProfileId: number) {
+    return this.http.get(`${API}/PredefinedProfiles/${predefinedProfileId}`);
   }
 }

@@ -16,6 +16,7 @@ import { take } from 'rxjs';
 import { ProfileDTO } from './service/ProfileDTO';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { IftaLabelModule } from 'primeng/iftalabel';
+import { InsertComponent } from '../../components/bufferAPI/insert/insert.component';
 
 @Component({
   selector: 'app-profile',
@@ -28,6 +29,7 @@ import { IftaLabelModule } from 'primeng/iftalabel';
     ReactiveFormsModule,
     InputNumberModule,
     IftaLabelModule,
+    InsertComponent,
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
@@ -60,46 +62,27 @@ export class ProfileComponent {
 
   createForm() {
     const form: { [key: string]: FormControl } = {};
-
     if (!this.profileData()) return;
 
     this.profileData().fields!.forEach((field) => {
       if (field.required) {
-        console.log('🚀 ~ createForm ~ field:', field);
-
         form[field.name!] = new FormControl(field.value! || '');
       }
     });
 
     this.profileForm = this.fb.group(form);
-    console.log('🚀 ~ createForm ~ this.profileData():', this.profileData());
   }
 
-  inserfBuffer(event: FileSelectEvent) {
-    console.log('🚀 ~ inserfBuffer ~ event:', event);
-    console.log('🚀 ~ inserfBuffer ~ event:', event);
+  inserfBuffer(event: string[]) {
+    if (event.length === 0) return;
 
-    this.service
-      .postBufferInsert(event.currentFiles[0])
-      .pipe(take(1))
-      .subscribe({
-        next: (res: any) => {
-          console.log(res);
+    this.profileData.update((data) => {
+      if (data.document) {
+        data.document.bufferIds = event;
+      }
 
-          const buffer: string[] = res;
-
-          if (buffer.length === 0) return;
-
-          this.profileData.update((data) => {
-            if (data.document) {
-              data.document.bufferIds = buffer;
-            }
-
-            return data;
-          });
-        },
-        error: (error) => console.log('Subscription error:', error),
-      });
+      return data;
+    });
   }
 
   onSubmit() {

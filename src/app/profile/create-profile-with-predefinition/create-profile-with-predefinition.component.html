@@ -1,0 +1,105 @@
+<div class="wrapper">
+  <p-select
+    [formControl]="predefinitionControl"
+    [options]="predefinitionsOptions()"
+    optionLabel="name"
+    placeholder="Select a predefinition"
+    class="w-full md:w-56"
+    filter="true"
+    (onChange)="getPredefinitionFields()"
+  />
+
+  @if (this.predefinitionsOptions()) {
+
+  <p-divider />
+
+  <form
+    [formGroup]="form"
+    class="card flex justify-center"
+    (ngSubmit)="onSubmit()"
+  >
+    @for (item of this.predefinitionFields(); track $index) {
+    <!-- INPUT SWITCH ACCORDING TO TYPE -->
+    @switch (getInputType(item.className)) {
+
+    <!-- NUMBER -->
+    @case ('number') {
+    <p-iftalabel class="formItem">
+      <p-inputnumber
+        class="input"
+        [id]="item.name"
+        [formControlName]="item.name!"
+      />
+      <label [for]="item.name">
+        {{ item.description }} ({{ item.className }})
+      </label>
+    </p-iftalabel>
+    }
+
+    <!-- TEXT -->
+    @case ('text') {
+    <p-iftalabel class="formItem">
+      <input
+        class="input"
+        [id]="item.name"
+        [formControlName]="item.name!"
+        pInputText
+      />
+      <label [for]="item.name">
+        {{ item.description }} ({{ item.className }})
+      </label>
+    </p-iftalabel>
+
+    }
+
+    <!-- DATE -->
+    @case ('date') {
+    <p-iftalabel class="formItem">
+      <p-datepicker
+        dateFormat="dd/mm/yy"
+        class="inputDate"
+        [id]="item.name"
+        [formControlName]="item.name!"
+        fluid
+      />
+
+      <label [for]="item.name">
+        {{ item.description }} ({{ item.className }})
+      </label>
+    </p-iftalabel>
+    }
+
+    <!-- CHECKBOX -->
+    @case ('checkbox') {
+
+    <!--
+
+    TODO
+
+    -->
+
+    }
+
+    <!-- DEFAULT AS A TEXT -->
+    @default {
+    <p-iftalabel class="formItem">
+      <input
+        class="input"
+        [id]="item.name"
+        [formControlName]="item.name!"
+        pInputText
+      />
+      <label [for]="item.name">
+        (d){{ item.description }} {{ item.className }}
+      </label>
+    </p-iftalabel>
+
+    } } }
+
+    <!-- SUBMIT -->
+    @if (predefinitionControl.value?.id) {
+    <button pButton size="large" class="submit" type="submit">Create</button>
+    }
+  </form>
+  }
+</div>

@@ -1,12 +1,21 @@
 <nav>
   <div class="nav-links">
     <p-button severity="secondary" label="Main" (click)="redirectTo('/main')" />
+
     <p-button
       label="Profile"
       severity="info"
       (click)="redirectTo('/profile')"
     />
+
+    <p-button
+      label="Creazione Profilo da profilo predefinito"
+      severity="info"
+      (click)="redirectTo('/profilePredefined')"
+    />
+
     <p-button label="Notes" severity="info" (click)="redirectTo('/notes')" />
+
     <p-button
       label="Attachments"
       severity="info"
@@ -14,5 +23,5 @@
     />
   </div>
 
-  <p-button severity="danger" (click)="logout()">logout</p-button>
+  <p-button severity="danger" (click)="logout()" label="Logout" />
 </nav>

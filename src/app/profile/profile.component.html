@@ -62,22 +62,10 @@
       } }
 
       <div class="apiItem">
-        <p-iftalabel>
-          <label for="file"> file </label>
-
-          <p-fileupload
-            id="file"
-            name="file"
-            mode="basic"
-            chooseIcon="pi pi-upload"
-            maxFileSize="1000000"
-            chooseLabel="Browse"
-            (onSelect)="inserfBuffer($event)"
-          />
-        </p-iftalabel>
+        <app-insert (bufferArray)="inserfBuffer($event)"></app-insert>
       </div>
 
-      <p-button label="Create Profile" type="submit" />
+      <p-button severity="success" label="Create Profile" type="submit" />
     </form>
   </div>
   }
